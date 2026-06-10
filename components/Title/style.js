@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { getFontFamily } from '../../assets/fonts/helper';
 
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
     title: {
         color: '#022150',
         fontSize: 24,
@@ -13,4 +13,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default styles;
+export default style;
