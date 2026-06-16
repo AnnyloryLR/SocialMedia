@@ -61,10 +61,63 @@ const App = () => {
 
   ];
 
+  const userPosts = [
+    {
+      firstName:"Allison",
+      lastName: "Becker",
+      location: "Boston, MA",
+      likes:1201,
+      comments:24,
+      bookmarks: 55,
+      id:1,
+    },
+    {
+      firstName:"Jenifer",
+      lastName: "Wilkson",
+      location: "Worcester, MA",
+      likes:1301,
+      comments:25,
+      bookmarks: 70,
+      id:2,
+    },
+    {
+      firstName:"Adam",
+      lastName: "Spera",
+      location: "Worcester, MA",
+      likes:100,
+      comments:8,
+      bookmarks: 3,
+      id:3,
+    },
+    {
+      firstName:"Anny",
+      lastName: "Rosa",
+      location: "Cotia, SP",
+      likes:121,
+      comments:2,
+      bookmarks: 2,
+      id:4,
+    },
+    {
+      firstName:"Nata",
+      lastName: "Vacheishvili",
+      location: "New York, NY",
+      likes:2001,
+      comments:24,
+      bookmarks: 5,
+      id:5,
+    }
+  ];
+
   const userStoriesPageSize = 4;
   const [userStoriesCurrentPage, setUserStoriesCurrentPage] = useState(1);
   const [userStoriesRenderedData, setUserStoriesRenderedData] = useState([]);
   const [isLoadingUserStories, setIsLoadingUserStories] =  useState(false);
+
+  const userPostsPageSize = 4;
+  const [userPostCurrentPage, setUserPostsCurrentPage] = useState(1);
+  const [userPostsRenderedData, setUserPostsRenderedData] = useState([]);
+  const [isLoadingUserPosts, setIsLoadingUserPosts] =  useState(false);
 
   const pagination = (database, currentPage, pageSize) => {
     const startIndex = (currentPage -1) * pageSize;
@@ -127,6 +180,11 @@ const App = () => {
             profileImage={item.profileImage}
           />
         )} />
+      </View>
+      <View>
+        <FlatList data={userPosts} renderItem={({item}) => {
+          
+        }} />
       </View>
     </SafeAreaView>
   
