@@ -5,7 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import globalStyle from './assets/styles/globalStyle'
 import Title from './components/Title/Title';
-import UserStory from './components/UserStory/UserStory'
+import UserStory from './components/UserStory/UserStory';
+import UserPost from './components/UserPost/UserPost'
 
 
 
@@ -69,6 +70,8 @@ const App = () => {
       likes:1201,
       comments:24,
       bookmarks: 55,
+      image: require('./assets/images/default_post.png'),
+      profileImage: require('./assets/images/default_profile.png'),
       id:1,
     },
     {
@@ -78,6 +81,8 @@ const App = () => {
       likes:1301,
       comments:25,
       bookmarks: 70,
+      image: require('./assets/images/default_post.png'),
+      profileImage: require('./assets/images/default_profile.png'),
       id:2,
     },
     {
@@ -87,6 +92,8 @@ const App = () => {
       likes:100,
       comments:8,
       bookmarks: 3,
+      image: require('./assets/images/default_post.png'),
+      profileImage: require('./assets/images/default_profile.png'),
       id:3,
     },
     {
@@ -96,6 +103,8 @@ const App = () => {
       likes:121,
       comments:2,
       bookmarks: 2,
+      image: require('./assets/images/default_post.png'),
+      profileImage: require('./assets/images/default_profile.png'),
       id:4,
     },
     {
@@ -105,6 +114,8 @@ const App = () => {
       likes:2001,
       comments:24,
       bookmarks: 5,
+      image: require('./assets/images/default_post.png'),
+      profileImage: require('./assets/images/default_profile.png'),
       id:5,
     }
   ];
@@ -183,7 +194,16 @@ const App = () => {
       </View>
       <View>
         <FlatList data={userPosts} renderItem={({item}) => {
-          
+          <UserPost 
+            firstName={item.firstName} 
+            lastName={item.lastName} 
+            image={item.image} 
+            likes={item.likes} 
+            comments={item.comments} 
+            bookmarks={item.bookmarks}
+            profileImage={item.profileImage}
+          />
+
         }} />
       </View>
     </SafeAreaView>
