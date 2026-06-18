@@ -33,18 +33,18 @@ const UserPost = (props) => {
             <View style={style.postImage}>
                 <Image source={props.image} />
             </View>
-            <View style={{flexDirection:'row', marginLeft:19}}>
+            <View style={style.userPostStats}>
                 <View style={{flexDirection:'row'}}>
                     <FontAwesomeIcon icon={faHeart}/>
-                    <Text style={{marginLeft:3, color:'#79869F'}}>{props.likes}</Text>
+                    <Text style={style.userStatButton}>{props.likes}</Text>
                 </View>
-                 <View style={{flexDirection:'row', marginLeft:27}}>
+                 <View style={style.userStatButtonRight}>
                     <FontAwesomeIcon icon={faMessage}/>
-                    <Text style={{marginLeft:3, color:'#79869F'}}>{props.comments}</Text>
+                    <Text style={style.userPostStatText}>{props.comments}</Text>
                 </View>
-                 <View style={{flexDirection:'row', marginLeft:27}}>
+                 <View style={style.userStatButtonRight}>
                     <FontAwesomeIcon icon={faBookmark}/>
-                    <Text style={{marginLeft:3, color:'#79869F'}}>{props.bookmarks}</Text>
+                    <Text style={style.userPostStatText}>{props.bookmarks}</Text>
                 </View>   
             </View>
         </View>

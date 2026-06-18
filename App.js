@@ -125,7 +125,7 @@ const App = () => {
   const [userStoriesRenderedData, setUserStoriesRenderedData] = useState([]);
   const [isLoadingUserStories, setIsLoadingUserStories] =  useState(false);
 
-  const userPostsPageSize = 4;
+  const userPostsPageSize = 2;
   const [userPostCurrentPage, setUserPostsCurrentPage] = useState(1);
   const [userPostsRenderedData, setUserPostsRenderedData] = useState([]);
   const [isLoadingUserPosts, setIsLoadingUserPosts] =  useState(false);
@@ -146,6 +146,11 @@ const App = () => {
     const getInitialData = pagination(userStories, 1, userStoriesPageSize);
     setUserStoriesRenderedData(getInitialData);
     setIsLoadingUserStories(false); 
+
+    setIsLoadingUserPosts(true);
+    const getInitialPosts = pagination(userPosts, 1, userPostsPageSize);
+    setUserPostsRenderedData(getInitialPosts);
+    setIsLoadingUserPosts(false); 
   }, [])
   return (
     <SafeAreaView>
@@ -197,8 +202,29 @@ const App = () => {
               </View>
             </>
           }
+
+        onEndReachedThreshold={0.5}
+        onEndReached={() => {
+            if(isLoadingUserPosts){
+              return;
+            }
+            setIsLoadingUserPosts(true);
+
+            const postsToAppend = pagination(
+              userPosts,
+              userPostCurrentPage + 1,
+              userPostsPageSize
+            );
+
+            if(postsToAppend.length > 0){
+              setUserPostsCurrentPage( userPostCurrentPage + 1);
+              setUserPostsRenderedData( prev => [...prev, ...postsToAppend])
+            }
+            setIsLoadingUserPosts(false);
+          }
+        }
         showsVerticalScrollIndicator={false}
-        data={userPosts} 
+        data={userPostsRenderedData} 
         renderItem={({item}) => (
           <View style={globalStyle.userPostContainer}>
             <UserPost 
