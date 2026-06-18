@@ -3,10 +3,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { View, TouchableOpacity, Text, FlatList } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
-import globalStyle from './assets/styles/globalStyle'
+import globalStyle from './assets/styles/globalStyle';
 import Title from './components/Title/Title';
 import UserStory from './components/UserStory/UserStory';
-import UserPost from './components/UserPost/UserPost'
+import UserPost from './components/UserPost/UserPost';
 
 
 
@@ -193,18 +193,20 @@ const App = () => {
         )} />
       </View>
       <View>
-        <FlatList data={userPosts} renderItem={({item}) => {
-          <UserPost 
-            firstName={item.firstName} 
-            lastName={item.lastName} 
-            image={item.image} 
-            likes={item.likes} 
-            comments={item.comments} 
-            bookmarks={item.bookmarks}
-            profileImage={item.profileImage}
-          />
-
-        }} />
+        <FlatList data={userPosts} renderItem={({item}) => (
+          <View style={globalStyle.userPostContainer}>
+            <UserPost 
+              firstName={item.firstName} 
+              lastName={item.lastName} 
+              location={item.location}
+              image={item.image} 
+              likes={item.likes} 
+              comments={item.comments} 
+              bookmarks={item.bookmarks}
+              profileImage={item.profileImage}
+            />
+          </View>
+        )} />
       </View>
     </SafeAreaView>
   
@@ -212,3 +214,4 @@ const App = () => {
 }
 
 export default App;
+ 
