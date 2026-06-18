@@ -29,10 +29,13 @@ const style = StyleSheet.create({
     },
     postImage:{
         alignItems:'center',
-        marginTop:20,
+        marginVertical:20,
     },
     userPostContainer:{
         marginTop:35,
+        paddingBottom:20,
+        borderBottomWidth:1,
+        borderBottomColor:'#EFF2F6'
     },
 })
 

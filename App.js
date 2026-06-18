@@ -149,51 +149,57 @@ const App = () => {
   }, [])
   return (
     <SafeAreaView>
-      <View style={globalStyle.header}>
-        <Title title={"Let's explore!"} />
-        <TouchableOpacity style={globalStyle.messageIcon}>
-          <FontAwesomeIcon icon={faEnvelope} size={20} color={'#898DAE'}/>
-          <View style={globalStyle.messageNumberContainer}>
-            <Text style={globalStyle.messageNumber}
-            >2</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-      <View style={globalStyle.userStoryContainer}>
-        <FlatList 
-          onEndReachedThreshold={0.5}
-          onEndReached={() => {
-            if(isLoadingUserStories){
-              return;
-            }
-            setIsLoadingUserStories(true);
-
-            const contentToAppend = pagination(
-              userStories,
-              userStoriesCurrentPage + 1,
-              userStoriesPageSize
-            );
-
-            if(contentToAppend.length > 0){
-              setUserStoriesCurrentPage( userStoriesCurrentPage + 1);
-              setUserStoriesRenderedData( prev => [...prev, ...contentToAppend])
-            }
-            setIsLoadingUserStories(false);
-            }
-          }
-          showsHorizontalScrollIndicator={false}
-          horizontal={true}
-          data={userStoriesRenderedData} 
-          renderItem={ ({item}) => (
-          <UserStory 
-            key={"UserStory" + item.id}
-            firstName={item.firstName}
-            profileImage={item.profileImage}
-          />
-        )} />
-      </View>
       <View>
-        <FlatList data={userPosts} renderItem={({item}) => (
+        <FlatList 
+          ListHeaderComponent={
+            <>
+              <View style={globalStyle.header}>
+                <Title title={"Let's explore!"} />
+                <TouchableOpacity style={globalStyle.messageIcon}>
+                  <FontAwesomeIcon icon={faEnvelope} size={20} color={'#898DAE'}/>
+                  <View style={globalStyle.messageNumberContainer}>
+                    <Text style={globalStyle.messageNumber}>2</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+              <View style={globalStyle.userStoryContainer}>
+                <FlatList 
+                  onEndReachedThreshold={0.5}
+                  onEndReached={() => {
+                      if(isLoadingUserStories){
+                        return;
+                      }
+                      setIsLoadingUserStories(true);
+
+                      const contentToAppend = pagination(
+                        userStories,
+                        userStoriesCurrentPage + 1,
+                        userStoriesPageSize
+                      );
+
+                      if(contentToAppend.length > 0){
+                        setUserStoriesCurrentPage( userStoriesCurrentPage + 1);
+                        setUserStoriesRenderedData( prev => [...prev, ...contentToAppend])
+                      }
+                      setIsLoadingUserStories(false);
+                    }
+                  }
+                  showsHorizontalScrollIndicator={false}
+                  horizontal={true}
+                  data={userStoriesRenderedData} 
+                  renderItem={ ({item}) => (
+                    <UserStory 
+                      key={"UserStory" + item.id}
+                      firstName={item.firstName}
+                      profileImage={item.profileImage}
+                    />
+                )} />
+              </View>
+            </>
+          }
+        showsVerticalScrollIndicator={false}
+        data={userPosts} 
+        renderItem={({item}) => (
           <View style={globalStyle.userPostContainer}>
             <UserPost 
               firstName={item.firstName} 
