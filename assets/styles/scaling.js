@@ -15,7 +15,7 @@ const guidelineBaseWidth = () => {
 
 const horizontalScale = size => (width / guidelineBaseWidth()) * size;
 
-const guidelineBaseHeigth = () => {
+const guidelineBaseHeight = () => {
     if(isSmall){
         return 550;
     } else if (width > 410){
@@ -25,7 +25,7 @@ const guidelineBaseHeigth = () => {
     return 680;
 };
 
-const verticalScale = size => (height / guidelineBaseHeigth()) * size;
+const verticalScale = size => (height / guidelineBaseHeight()) * size;
 
 const guidelineBaseFonts = () => {
     if (width > 410) {
