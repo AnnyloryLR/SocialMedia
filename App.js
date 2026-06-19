@@ -89,9 +89,9 @@ const App = () => {
       firstName:"Adam",
       lastName: "Spera",
       location: "Worcester, MA",
-      likes:100,
-      comments:8,
-      bookmarks: 3,
+      likes:1000,
+      comments:80,
+      bookmarks: 30,
       image: require('./assets/images/default_post.png'),
       profileImage: require('./assets/images/default_profile.png'),
       id:3,
@@ -100,9 +100,9 @@ const App = () => {
       firstName:"Anny",
       lastName: "Rosa",
       location: "Cotia, SP",
-      likes:121,
-      comments:2,
-      bookmarks: 2,
+      likes:1210,
+      comments:20,
+      bookmarks: 20,
       image: require('./assets/images/default_post.png'),
       profileImage: require('./assets/images/default_profile.png'),
       id:4,
@@ -126,7 +126,7 @@ const App = () => {
   const [isLoadingUserStories, setIsLoadingUserStories] =  useState(false);
 
   const userPostsPageSize = 2;
-  const [userPostCurrentPage, setUserPostsCurrentPage] = useState(1);
+  const [userPostsCurrentPage, setUserPostsCurrentPage] = useState(1);
   const [userPostsRenderedData, setUserPostsRenderedData] = useState([]);
   const [isLoadingUserPosts, setIsLoadingUserPosts] =  useState(false);
 
@@ -151,6 +151,7 @@ const App = () => {
     const getInitialPosts = pagination(userPosts, 1, userPostsPageSize);
     setUserPostsRenderedData(getInitialPosts);
     setIsLoadingUserPosts(false); 
+
   }, [])
   return (
     <SafeAreaView>
@@ -198,47 +199,50 @@ const App = () => {
                       firstName={item.firstName}
                       profileImage={item.profileImage}
                     />
-                )} />
+                  )} 
+                />
               </View>
             </>
           }
 
-        onEndReachedThreshold={0.5}
-        onEndReached={() => {
+          onEndReachedThreshold={0.5}
+          onEndReached={() => {
             if(isLoadingUserPosts){
               return;
-            }
+            };
             setIsLoadingUserPosts(true);
-
+        
             const postsToAppend = pagination(
               userPosts,
-              userPostCurrentPage + 1,
-              userPostsPageSize
+              userPostsCurrentPage + 1,
+              userPostsPageSize,
             );
 
             if(postsToAppend.length > 0){
-              setUserPostsCurrentPage( userPostCurrentPage + 1);
+              setUserPostsCurrentPage( userPostsCurrentPage + 1);
               setUserPostsRenderedData( prev => [...prev, ...postsToAppend])
             }
             setIsLoadingUserPosts(false);
-          }
-        }
-        showsVerticalScrollIndicator={false}
-        data={userPostsRenderedData} 
-        renderItem={({item}) => (
-          <View style={globalStyle.userPostContainer}>
-            <UserPost 
-              firstName={item.firstName} 
-              lastName={item.lastName} 
-              location={item.location}
-              image={item.image} 
-              likes={item.likes} 
-              comments={item.comments} 
-              bookmarks={item.bookmarks}
-              profileImage={item.profileImage}
-            />
-          </View>
-        )} />
+          }}
+  
+          showsVerticalScrollIndicator={false}
+          data={userPostsRenderedData} 
+          renderItem={({item}) => (
+            <View style={globalStyle.userPostContainer}>
+              <UserPost 
+                key={"UserPost" + item.id}
+                firstName={item.firstName} 
+                lastName={item.lastName} 
+                location={item.location}
+                image={item.image} 
+                likes={item.likes} 
+                comments={item.comments} 
+                bookmarks={item.bookmarks}
+                profileImage={item.profileImage}
+              />
+            </View>
+          )} 
+        />
       </View>
     </SafeAreaView>
   
