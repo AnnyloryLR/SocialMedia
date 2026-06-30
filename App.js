@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { 
-          View,
-          TouchableOpacity, 
-          Text, 
-          FlatList,
-          StatusBar
-        } from 'react-native';
+import { View, TouchableOpacity, Text, FlatList } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import globalStyle from './assets/styles/globalStyle';
@@ -161,7 +155,6 @@ const App = () => {
   }, [])
   return (
     <SafeAreaView>
-      <StatusBar barStyle={'dark-content'}/>
       <View>
         <FlatList 
           ListHeaderComponent={
