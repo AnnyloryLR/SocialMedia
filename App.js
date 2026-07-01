@@ -7,6 +7,7 @@ import globalStyle from './assets/styles/globalStyle';
 import Title from './components/Title/Title';
 import UserStory from './components/UserStory/UserStory';
 import UserPost from './components/UserPost/UserPost';
+import { NavigationContainer } from '@react-navigation/native';
 
 
 
@@ -153,7 +154,8 @@ const App = () => {
     setIsLoadingUserPosts(false); 
   }, [])
   return (
-    <SafeAreaView>
+    <NavigationContainer>
+      <SafeAreaView>
       <View>
         <FlatList 
           ListHeaderComponent={
@@ -240,7 +242,9 @@ const App = () => {
           </View>
         )} />
       </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    </NavigationContainer>
+  
   
   );
 }
