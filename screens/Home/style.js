@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
-import { getFontFamily } from "../fonts/helper";
+import { getFontFamily } from "../../assets/fonts/helper";
 
-const globalStyle = StyleSheet.create({
+const style = StyleSheet.create({
     header:{
         marginLeft:27,
         marginRight:17,
@@ -43,4 +43,4 @@ const globalStyle = StyleSheet.create({
   
 })
 
-export default globalStyle;
+export default style;
