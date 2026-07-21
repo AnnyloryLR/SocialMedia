@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import MainNavigation from './navigation/MainNavigation';
 
@@ -12,7 +12,6 @@ const App = () => {
     <NavigationContainer>
       <MainNavigation />
     </NavigationContainer>
-  
   
   );
 }

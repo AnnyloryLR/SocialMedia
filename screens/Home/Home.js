@@ -7,6 +7,7 @@ import style from './style';
 import Title from '../../components/Title/Title';
 import UserStory from '../../components/UserStory/UserStory';
 import UserPost from '../../components/UserPost/UserPost';
+import globalStyle from '../../assets/styles/globalStyle';
 
 
 
@@ -153,7 +154,7 @@ const Home = () => {
     setIsLoadingUserPosts(false); 
   }, [])
   return (
-      <SafeAreaView>
+      <SafeAreaView style={globalStyle.whiteBackground}>
       <View>
         <FlatList 
           ListHeaderComponent={
@@ -228,6 +229,7 @@ const Home = () => {
         renderItem={({item}) => (
           <View style={style.userPostContainer}>
             <UserPost 
+              key={"UserPost" + item.id}
               firstName={item.firstName} 
               lastName={item.lastName} 
               location={item.location}
