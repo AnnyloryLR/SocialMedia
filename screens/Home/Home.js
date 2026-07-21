@@ -226,7 +226,7 @@ const Home = () => {
         showsVerticalScrollIndicator={false}
         data={userPostsRenderedData} 
         renderItem={({item}) => (
-          <View style={globalStyle.userPostContainer}>
+          <View style={style.userPostContainer}>
             <UserPost 
               firstName={item.firstName} 
               lastName={item.lastName} 
